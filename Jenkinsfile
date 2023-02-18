@@ -6,8 +6,12 @@ pipeline {
         steps {
         git 'https://github.com/kutto1/gallery.git'
         sh 'npm install'
-
       }
+      stage('Test') {
+                    steps {
+                        sh './jenkins/scripts/test.sh'
+                    }
+                }
       }
       }
       }
