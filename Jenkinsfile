@@ -11,21 +11,25 @@ pipeline {
       }
    }
     stage('Deploy to Heroku') {
-  steps {
-    withCredentials([gitUsernamePassword(credentialsId: 'heroku', gitToolName: 'Default')]) {
+      steps {
+      withCredentials([gitUsernamePassword(credentialsId: 'heroku', gitToolName: 'Default')]) {
       sh 'git push https://${Default}@git.heroku.com/desolate-basin-97102.git master'
          }
         }
                           } 
+    stage('Tests') {
+       steps { 
+       sh 'npm test'
+  }
+}
           }  
 }
-  post {
-    always {
-      sh 'docker logout'
-        
-      }
-  
-      }
+  Post { failure { emailext body: 'Fail Body', subject: 'Status for App test', to: 'paul.kutto@student.moringaschool.com' } 
+
+//always{ slackSend( channel: "#jenkins", token: "slack_webhook token", color: "good", message: "Test Email") }
+ }
+
+ 
   
        
     
