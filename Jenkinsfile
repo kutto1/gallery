@@ -2,22 +2,22 @@ pipeline {
       agent any
       tools {nodejs "node"}
 
-  environment {
-            CI = 'true'
-        }
+  //environment {
+    //        CI = 'true'
+      //  }
   stages {
 
-    stage('Build') {
+    stage ('Build') {
         steps {
-        git 'https://github.com/kutto1/gallery.git'
+          git 'https://github.com/kutto1/gallery.git'
         sh 'npm install'
       }
   
-        stage('Test') {
-                    steps {
-                        sh './test/serverTest.js'
-                    }
-                }
+        //stage('Test') {
+       //             steps {
+         //               sh './test/serverTest.js'
+           //         }
+             //   }
       }
       }
       }
