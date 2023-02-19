@@ -12,9 +12,9 @@ pipeline {
    }
     stage('Deploy to Heroku') {
   steps {
-    withCredentials([usernameColonPassword(credentialsId: 'heroku', variable: 'HEROKU_CREDENTIALS' )]){
-      sh 'git push https://${HEROKU_CREDENTIALS}@git.heroku.com/desolate-basin-97102.git master'
-    }
+    withCredentials([gitUsernamePassword(credentialsId: 'heroku', gitToolName: 'Default')]) {
+      sh 'git push https://${Default}@git.heroku.com/desolate-basin-97102.git master'
+   }
   }
 } 
 }
