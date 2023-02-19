@@ -14,7 +14,7 @@ pipeline {
   stages {
     stage ('Build') {
         steps {
-          git 'https://github.com/kutto1/gallery.git'
+         // git 'https://github.com/kutto1/gallery.git'
           sh 'npm install'
           sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'       
       }
