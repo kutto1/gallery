@@ -1,9 +1,7 @@
 pipeline {
       agent any
       tools {nodejs "node"}
-      options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
-      }
+      
  environment {
     HEROKU_API_KEY = credentials('heroku-api-key')
     IMAGE_NAME = 'kutto1/gallery'
@@ -14,9 +12,9 @@ pipeline {
   stages {
     stage ('Build') {
         steps {
-         // git 'https://github.com/kutto1/gallery.git'
+         git 'https://github.com/kutto1/gallery.git'
           sh 'npm install'
-          sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'       
+               
       }
     }
       stage('Login') {
