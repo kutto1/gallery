@@ -1,7 +1,7 @@
 pipeline {
       agent any
       tools {nodejs "node"}
-      
+
   environment {
             CI = 'true'
         }
@@ -12,9 +12,10 @@ pipeline {
         git 'https://github.com/kutto1/gallery.git'
         sh 'npm install'
       }
-      stage('Test') {
+  
+        stage('Test') {
                     steps {
-                        sh './jenkins/scripts/test.sh'
+                        sh './test/serverTest.js'
                     }
                 }
       }
