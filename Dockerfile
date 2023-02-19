@@ -1,10 +1,6 @@
 FROM node:16.16.0-buster AS build
 WORKDIR /build
 
-FROM jenkins/jenkins:alpine
-
-RUN apk add --update docker openrc && rc-update add docker boot
-
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 RUN npm ci
