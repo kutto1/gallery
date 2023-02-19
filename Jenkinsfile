@@ -22,15 +22,12 @@ pipeline {
        sh 'npm test'
   }
   
-        Post { 
-          failure { emailext body: 'Fail Body', subject: 'Status for App test', to: 'paul.kutto@student.moringaschool.com' } 
-             }
+        //Post { 
+          //failure { emailext body: 'Fail Body', subject: 'Status for App test', to: 'paul.kutto@student.moringaschool.com' } 
+            // }
           }  
+} 
 }
-  
-
-//always{ slackSend( channel: "#jenkins", token: "slack_webhook token", color: "good", message: "Test Email") }
- }
 
  
   
