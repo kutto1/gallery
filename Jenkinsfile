@@ -7,7 +7,10 @@ pipeline {
         steps {
          git 'https://github.com/kutto1/gallery.git'
           sh 'npm install'
-               
+         Post { 
+          always  { slackSend channel: 'jenkins', message: 'Pipeline Status'}
+            
+            }      
       }
    }
     stage('Deploy to Heroku') {
@@ -25,10 +28,7 @@ pipeline {
         
           }  
 } 
-    Post { 
-          always  { slackSend channel: 'jenkins', message: 'Pipeline Status'}
-            
-            }
+    
 }
 
   
