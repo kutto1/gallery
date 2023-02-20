@@ -28,6 +28,9 @@ pipeline {
           }  
 } 
 }
+Post { 
+          always  { slackSend baseUrl: 'https://desolate-basin-97102.herokuapp.com/', channel: 'jenkins', failOnError: true, message: 'Pipeline success notification:'} 
+            }
 
  
   
