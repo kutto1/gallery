@@ -22,20 +22,15 @@ pipeline {
        sh 'npm test'
   }
   
-        //Post { 
-          //failure { emailext body: 'Fail Body', subject: 'Status for App test', to: 'paul.kutto@student.moringaschool.com' } 
-            // }
+        
           }  
 } 
     Post { 
-          always  { slackSend baseUrl: 'https://desolate-basin-97102.herokuapp.com/', 
-                    channel: 'jenkins', failOnError: true, message: 'Pipeline success notification. ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}'
-                    } 
+          always  { slackSend channel: 'jenkins', message: 'Pipeline Status'}
+            
             }
 }
 
-
- 
   
        
     
