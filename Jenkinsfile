@@ -19,12 +19,15 @@ pipeline {
     stage('Tests') {
        steps { 
        sh 'npm test'
-  }
-  
-        
+       post {
+        failure {
+            emailext body: 'This is body', subject: 'Test stage status:Failed', to: 'paul.kutto@student.moringaschool.com' 
+            }
+            }        
           }  
-} 
+        } 
     
+    }
 }
 
   
