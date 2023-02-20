@@ -28,6 +28,12 @@ pipeline {
         } 
     
     }
+    post {
+         {
+           slackSend channel: 'jenkins', color: 'Green', 
+           message: "Pipeline Status: Pass! ${env.JOB_NAME} ${env.BUILD_NUMBER} ${env.BUILD_URL}"       
+             }
+}
 }
 
   
